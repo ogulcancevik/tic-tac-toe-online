@@ -19,6 +19,7 @@ A modern, highly-responsive, real-time multiplayer Tic Tac Toe game built with R
 - [Tailwind CSS v4](https://tailwindcss.com/)
 - [React Router DOM](https://reactrouter.com/)
 - [Socket.IO Client](https://socket.io/)
+- [Biome](https://biomejs.dev/) (Ultra-fast Linter & Formatter)
 
 **Backend:**
 - [Node.js](https://nodejs.org/) & [Express](https://expressjs.com/)
