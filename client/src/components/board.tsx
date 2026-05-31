@@ -7,9 +7,10 @@ interface BoardProps {
   roomId: string;
   player1: string;
   player2: string;
+  onReturnToMenu: () => void;
 }
 
-export const Board = ({ role, roomId, player1, player2 }: BoardProps) => {
+export const Board = ({ role, roomId, player1, player2, onReturnToMenu }: BoardProps) => {
   const [board, setBoard] = useState<Player[]>(new Array(9).fill(null));
   const [isMyTurn, setIsMyTurn] = useState<boolean>(role === "X");
   const [playerLeft, setPlayerLeft] = useState<boolean>(false);
@@ -77,12 +78,12 @@ export const Board = ({ role, roomId, player1, player2 }: BoardProps) => {
       <div className="w-full flex justify-between items-center bg-zinc-800 rounded-xl p-3 sm:p-4 border border-zinc-700">
         <div className={`flex flex-col items-center ${role === 'X' ? 'text-rose-400 font-bold drop-shadow-[0_0_5px_rgba(251,113,133,0.3)]' : 'text-zinc-500'}`}>
           <span className="text-xs sm:text-sm">Player X</span>
-          <span className="text-lg sm:text-xl truncate max-w-[80px] sm:max-w-[120px]">{player1}</span>
+          <span className="text-lg sm:text-xl truncate max-w-20 sm:max-w-24">{player1}</span>
         </div>
         <div className="text-zinc-600 font-black text-xl sm:text-2xl">VS</div>
         <div className={`flex flex-col items-center ${role === 'O' ? 'text-cyan-400 font-bold drop-shadow-[0_0_5px_rgba(34,211,238,0.3)]' : 'text-zinc-500'}`}>
           <span className="text-xs sm:text-sm">Player O</span>
-          <span className="text-lg sm:text-xl truncate max-w-[80px] sm:max-w-[120px]">{player2}</span>
+          <span className="text-lg sm:text-xl truncate max-w-20 sm:max-w-24">{player2}</span>
         </div>
       </div>
 
@@ -120,6 +121,15 @@ export const Board = ({ role, roomId, player1, player2 }: BoardProps) => {
           );
         })}
       </div>
+
+      {(isGameOver || playerLeft) && (
+        <button
+          onClick={onReturnToMenu}
+          className="w-full rounded-xl bg-indigo-600 p-3 font-bold text-white hover:bg-indigo-500 active:scale-95 transition-all shadow-lg"
+        >
+          Return to Main Menu
+        </button>
+      )}
     </div>
   );
 };
