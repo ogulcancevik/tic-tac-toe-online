@@ -16,6 +16,12 @@ export const Board = ({ role, roomId, player1, player2, onReturnToMenu }: BoardP
   const [playerLeft, setPlayerLeft] = useState<boolean>(false);
 
   useEffect(() => {
+    socket.emit("check_room", roomId, (isInRoom: boolean) => {
+      if (!isInRoom) {
+        onReturnToMenu();
+      }
+    });
+
     const handleOpponentMoved = (data: { index: number; player: Player }) => {
       setBoard((prev) => {
         const newBoard = [...prev];

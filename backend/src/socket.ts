@@ -61,10 +61,17 @@ export const setupSocketHandlers = (io: Server) => {
     });
 
     socket.on('make_move', (data: { room: string, index: number, player: string }) => {
+      if (socketToRoom.get(socket.id) !== data.room) return;
+      
       socket.to(data.room).emit('opponent_moved', {
         index: data.index,
         player: data.player
       });
+    });
+
+    socket.on('check_room', (roomId: string, callback) => {
+      const currentRoom = socketToRoom.get(socket.id);
+      callback(currentRoom === roomId);
     });
 
     socket.on('disconnect', () => {
