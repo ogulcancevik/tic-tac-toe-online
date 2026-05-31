@@ -16,7 +16,7 @@ const io = new Server(httpServer, {
 });
 setupSocketHandlers(io);
 
-const PORT = process.env.PORT || 7070;
+const PORT = 7070;
 httpServer.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
