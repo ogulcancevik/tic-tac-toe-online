@@ -11,7 +11,7 @@ export const App = () => {
   } | null>(null);
 
   return (
-    <div className="flex min-h-[100dvh] flex-col items-center justify-center bg-zinc-950 p-2 sm:p-4 font-sans text-zinc-100">
+    <div className="flex min-h-dvh flex-col items-center justify-center bg-zinc-950 p-2 sm:p-4 font-sans text-zinc-100">
       {gameState ? (
         <div className="flex w-full flex-1 flex-col items-center justify-center space-y-6 sm:flex-initial">
           <h1 className="text-4xl font-extrabold tracking-tight bg-linear-to-r from-indigo-400 to-cyan-400 bg-clip-text text-transparent">
