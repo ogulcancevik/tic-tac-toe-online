@@ -77,7 +77,7 @@ A modern, highly-responsive, real-time multiplayer Tic Tac Toe game built with R
 
 To format and lint the backend code using Biome:
 ```bash
-cd backend
+cd backend or cd client
 npm run lint    # Check for linting errors
 npm run format  # Auto-format code
 ```
